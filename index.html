@@ -32,6 +32,9 @@ header{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:#1
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:20px}
 .logo{font-weight:900;font-size:22px;letter-spacing:-.04em}
 .logo span{color:var(--accent)}
+.lang{display:inline-grid;place-items:center;min-width:44px;min-height:36px;padding:0 12px;border:1.5px solid #ffffff40;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.08em;transition:border-color .3s,color .3s}
+.lang:hover{border-color:var(--accent);color:var(--accent)}
+nav a.lang::after{display:none}
 nav{display:flex;align-items:center;gap:32px;font-weight:600;font-size:15px}
 nav a:not(.btn){position:relative}
 nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .3s}
@@ -154,6 +157,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
 @media (max-width:900px){
   .wrap{padding:0 16px}
   nav a:not(.btn){display:none}
+  nav a.lang{display:inline-grid}
   .svc{grid-template-columns:48px 1fr}
   .svc p{grid-column:2;max-height:none;opacity:1}
   .ex-grid,.plans{grid-template-columns:1fr}
@@ -176,6 +180,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
       <a href="#exemples">Examples</a>
       <a href="#apropos">About</a>
       <a href="#tarifs">Pricing</a>
+      <a class="lang" href="fr.html" hreflang="fr" lang="fr" aria-label="Version française" onclick="this.href=this.getAttribute('href').split('#')[0]+location.hash">FR</a>
       <a class="btn primary" href="#contact">Let's talk</a>
     </nav>
   </div>
