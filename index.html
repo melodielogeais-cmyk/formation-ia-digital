@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mélodie — J'automatise votre business avec l'IA</title>
+<meta name="description" content="Formation IA en 1:1 à Bordeaux et en visio : marketing, administratif, commercial, développement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Rubik+Glitch&family=Rubik+Bubbles&family=Rubik+Iso&family=Rubik+Maze&family=Rubik+Moonrocks&family=Rubik+Puddles&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c0c22;--bg-2:#28132f;--card:#321a3b;--line:#4a2d55;--text:#fff6fa;--mute:#d2bccf;--accent:#ffa8d4;--violet:#cbb8ff;--pink:#ffc6de;--mint:#bff2dc;--dark:#1c0c22}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 28px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .3s,background .3s,color .3s;cursor:pointer;border:0;font-family:inherit}
+.btn:hover{transform:translateY(-3px)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{border:2px solid var(--text);color:var(--text);background:none}
+.btn.ghost:hover{background:var(--text);color:var(--bg)}
+.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+h2{font-size:clamp(36px,4.6vw,68px);font-weight:900;letter-spacing:-.035em;line-height:1;margin:0}
+
+/* cursor */
+.cursor{position:fixed;top:0;left:0;width:360px;height:360px;border-radius:50%;pointer-events:none;z-index:0;background:radial-gradient(circle,#ffa8d440 0%,transparent 65%);transform:translate(-50%,-50%);transition:opacity .3s;filter:blur(10px)}
+@media (hover:none){.cursor{display:none}}
+
+/* header */
+header{position:sticky;top:0;z-index:40;backdrop-filter:blur(14px);background:#1c0c22cc;border-bottom:1px solid #ffffff10}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:80px;gap:20px}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.04em}
+.logo span{color:var(--accent)}
+nav{display:flex;align-items:center;gap:32px;font-weight:600;font-size:15px}
+nav a:not(.btn){position:relative}
+nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .3s}
+nav a:not(.btn):hover::after{width:100%}
+
+/* hero */
+.hero{position:relative;padding:140px 0 120px;text-align:center;z-index:1}
+.hero h1{font-size:clamp(48px,8vw,128px);font-weight:900;letter-spacing:-.05em;line-height:.95;margin:0}
+.word{display:inline-block;min-width:4ch;color:var(--accent);font-weight:400;letter-spacing:0;transition:opacity .25s,transform .25s}
+.word.out{opacity:0;transform:translateY(20px) rotate(-3deg)}
+.hero p{max-width:700px;margin:36px auto 44px;font-size:20px;line-height:1.6;color:var(--mute);font-weight:500}
+.hero .ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.55;z-index:-1;animation:float 14s ease-in-out infinite}
+.blob.a{width:420px;height:420px;background:var(--violet);top:40px;left:-120px}
+.blob.b{width:360px;height:360px;background:var(--mint);bottom:-60px;right:-80px;animation-delay:-6s;opacity:.35}
+@keyframes float{50%{transform:translate(60px,-40px) scale(1.1)}}
+
+/* marquee */
+.tools{padding:40px 0 100px;position:relative;z-index:1}
+.tools p{text-align:center;color:var(--mute);font-weight:600;margin:0 0 28px}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.logo-item{display:inline-flex;flex-direction:column;align-items:center;gap:10px;flex:none}
+.logo-name{font-size:13px;font-weight:600;color:var(--mute);letter-spacing:.01em;white-space:nowrap}
+.logo-tile{display:inline-grid;place-items:center;flex:none;border-radius:23%;box-shadow:inset 0 1px 0 #ffffff59,inset 0 -2px 6px #00000026,0 6px 16px #0000002e;background-image:linear-gradient(180deg,#ffffff33,#ffffff00 55%)!important;background-blend-mode:normal}
+.track{display:flex;align-items:center;padding:12px 0 20px;gap:28px;width:max-content;animation:scroll 30s linear infinite}
+.marquee:hover .track{animation-play-state:paused}
+.chip{padding:16px 28px;border:1px solid var(--line);border-radius:999px;font-weight:700;font-size:18px;white-space:nowrap;background:var(--bg-2)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* services */
+.services{padding:120px 0;position:relative;z-index:1}
+.services .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:56px}
+.services .head p{max-width:420px;color:var(--mute);line-height:1.6;margin:0;font-weight:500}
+.svc{border-top:1px solid var(--line);padding:32px 0;display:grid;grid-template-columns:80px 1fr 1fr;gap:24px;align-items:start;cursor:default;transition:padding .4s}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc .n{font-weight:800;color:var(--mute)}
+.svc h3{margin:0;font-size:clamp(28px,3.4vw,48px);font-weight:800;letter-spacing:-.03em;transition:color .3s,transform .4s}
+.svc .label{display:block;font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.svc p{margin:0;color:var(--mute);line-height:1.65;font-weight:500;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s,opacity .5s}
+.svc:hover,.svc:focus-within{padding:44px 0}
+.svc:hover h3{color:var(--accent);transform:translateX(12px)}
+.svc:hover p,.svc.open p{max-height:200px;opacity:1}
+@media (hover:none){.svc p{max-height:none;opacity:1}}
+
+/* projects / exemples */
+.examples{padding:60px 0 120px;position:relative;z-index:1}
+.ex-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:56px}
+.ex{border-radius:28px;padding:36px;min-height:420px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:transform .5s}
+.ex:hover{transform:translateY(-8px) rotate(-.6deg)}
+.ex{color:var(--dark)}
+.ex:nth-child(1){background:linear-gradient(160deg,#e6dcff,#b9a3ff)}
+.ex:nth-child(2){background:linear-gradient(160deg,#ffd9e9,#ff9ccb)}
+.ex:nth-child(3){background:linear-gradient(160deg,#d8f8ea,#9fe6c6)}
+.ex .k{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;opacity:.85}
+.ex h3{font-size:32px;font-weight:900;letter-spacing:-.03em;margin:0 0 14px;line-height:1.05}
+.ex p{margin:0;font-weight:500;line-height:1.55;opacity:.9}
+.ex .before-after{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+.ex .ba{background:#ffffff8c;border-radius:14px;padding:12px 16px;font-size:14px;font-weight:600}
+
+
+/* about */
+.about{padding:120px 0;position:relative;z-index:1}
+.about .inner{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:32px;align-items:center}
+.about .photo{grid-column:1/6;aspect-ratio:1;border-radius:40px;background:var(--card);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--mute);font-weight:600;position:relative}
+.about .photo .sticker{position:absolute;right:-24px;top:32px;background:var(--accent);color:var(--bg);font-weight:900;padding:14px 20px;border-radius:999px;transform:rotate(8deg);font-size:15px}
+.about .txt{grid-column:7/13}
+.about .big{font-size:clamp(26px,2.6vw,38px);line-height:1.35;font-weight:600;letter-spacing:-.02em;margin:0 0 32px}
+mark{background:var(--accent);color:var(--bg);padding:0 .2em;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+mark.v{background:var(--violet);color:var(--dark)}
+
+/* badges */
+.badges{padding:40px 0 120px;position:relative;z-index:1}
+.badge-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.badge{background:var(--bg-2);border:1px solid var(--line);border-radius:24px;padding:32px 28px;text-align:center;transition:border-color .3s}
+.badge:hover{border-color:var(--accent)}
+.badge b{display:block;font-size:44px;font-weight:900;letter-spacing:-.04em;color:var(--accent)}
+.badge span{color:var(--mute);font-weight:600;font-size:15px}
+
+/* perso */
+.perso{padding:60px 0 120px;position:relative;z-index:1}
+.perso-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:56px}
+.pc{background:var(--bg-2);border:1px solid var(--line);border-radius:28px;padding:36px}
+.pc .pk{display:inline-block;background:var(--accent);color:var(--dark);font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:.12em;padding:6px 14px;border-radius:999px}
+.pc:nth-child(2) .pk{background:var(--violet)}.pc:nth-child(3) .pk{background:var(--mint)}
+.pc h3{margin:24px 0 12px;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.pc p{margin:0;color:var(--mute);line-height:1.6;font-weight:500}
+@media (max-width:900px){.perso-grid{grid-template-columns:1fr}}
+/* pricing */
+.pricing{padding:60px 0 120px;position:relative;z-index:1}
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:56px}
+.plan{background:var(--bg-2);border:1px solid var(--line);border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:16px}
+.plan.hot{background:var(--text);color:var(--bg);border-color:var(--text)}
+.plan h3{margin:0;font-size:18px;font-weight:800}
+.plan .amt{font-size:64px;font-weight:900;letter-spacing:-.05em}
+.plan p{margin:0;line-height:1.55;font-weight:500;color:var(--mute)}
+.plan.hot{background:var(--pink);border-color:var(--pink)}
+.plan.hot p{color:#4a2d55}
+
+/* cta */
+.cta{padding:120px 0;position:relative;z-index:1}
+.cta-box{background:var(--card);border:1px solid var(--line);border-radius:40px;padding:72px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;position:relative;overflow:hidden}
+.cta-box h2{font-size:clamp(40px,5vw,80px)}
+.cta-box h2 em{font-family:"Rubik Bubbles";font-style:normal;font-weight:400;color:var(--accent)}
+.cta-box .lead{color:var(--mute);font-size:18px;line-height:1.6;margin:24px 0 32px;font-weight:500}
+form{display:flex;flex-direction:column;gap:16px}
+label{display:flex;flex-direction:column;gap:8px;font-weight:700;font-size:14px}
+input,textarea,select{font:inherit;font-weight:500;font-size:16px;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px 18px;outline:none;transition:border-color .3s}
+input:focus,textarea:focus,select:focus{border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical}
+.ok{display:none;color:var(--accent);font-weight:700}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--mute);font-weight:500;font-size:14px;position:relative;z-index:1}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between}
+
+.reveal{opacity:0;transform:translateY(50px) scale(.98);transition:opacity .9s,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .wrap{padding:0 16px}
+  nav a:not(.btn){display:none}
+  .svc{grid-template-columns:48px 1fr}
+  .svc p{grid-column:2;max-height:none;opacity:1}
+  .ex-grid,.plans{grid-template-columns:1fr}
+  .badge-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .about .photo,.about .txt{grid-column:1/-1}
+  .about .photo .sticker{right:12px}
+  .cta-box{grid-template-columns:1fr;padding:32px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">melodie<span>.</span>ia</a>
+    <nav aria-label="Navigation principale">
+      <a href="#services">Domaines</a>
+      <a href="#exemples">Exemples</a>
+      <a href="#apropos">À propos</a>
+      <a href="#tarifs">Tarifs</a>
+      <a class="btn primary" href="#contact">On en parle ?</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="blob a" aria-hidden="true"></div><div class="blob b" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">Formation IA en 1:1 · Bordeaux &amp; visio</span>
+      <h1>J'automatise<br>votre <span class="word" id="word" aria-live="polite">marketing</span></h1>
+      <p>Une à deux personnes maximum, derrière votre ordinateur. Je vous montre la pleine puissance de l'IA, avec les méthodes que j'utilise chaque jour dans une startup IA.</p>
+      <div class="ctas"><a class="btn primary" href="#contact">Réserver une séance</a><a class="btn ghost" href="#exemples">Voir des exemples</a></div>
+    </div>
+  </section>
+
+  <section class="tools" aria-label="Outils utilisés">
+    <p>Les outils que je vous apprends à maîtriser</p>
+    <div class="marquee"><div class="track" id="track"></div></div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="head reveal"><div><span class="eyebrow">Domaines</span><h2>Ce qu'on<br>automatise.</h2></div><p>Chaque séance part de vos vraies tâches. On choisit un domaine, on construit, vous repartez avec un résultat qui tourne.</p></div>
+      <div class="svc reveal" tabindex="0"><span class="n">01</span><div><span class="label">Stratégie</span><h3>Diagnostic IA</h3></div><p>On cartographie vos tâches répétitives et on choisit celles qui rapportent le plus de temps une fois automatisées.</p></div>
+      <div class="svc reveal" tabindex="0"><span class="n">02</span><div><span class="label">Visibilité</span><h3>Marketing</h3></div><p>Calendrier de posts, newsletters, fiches produits, visuels, veille concurrentielle : tout ce qui demande d'écrire et de créer.</p></div>
+      <div class="svc reveal" tabindex="0"><span class="n">03</span><div><span class="label">Organisation</span><h3>Administratif</h3></div><p>Tri des mails, comptes rendus, devis, factures, agenda. Mon métier d'assistante de direction, augmenté par l'IA.</p></div>
+      <div class="svc reveal" tabindex="0"><span class="n">04</span><div><span class="label">Ventes</span><h3>Commercial</h3></div><p>Messages de prospection, relances, propositions commerciales, préparation de rendez-vous.</p></div>
+      <div class="svc reveal" tabindex="0"><span class="n">05</span><div><span class="label">Création</span><h3>Développement</h3></div><p>Un site, un outil interne ou un script, construits avec l'IA, même sans savoir coder.</p></div>
+    </div>
+  </section>
+
+  <section class="examples" id="exemples">
+    <div class="wrap">
+      <div class="reveal"><span class="eyebrow">Exemples</span><h2>Avant / après<br>une séance.</h2></div>
+      <div class="ex-grid">
+        <article class="ex reveal"><span class="k">Marketing</span><div><h3>Un mois de posts en une heure</h3><p>Vos thèmes, votre ton, et l'IA prépare le calendrier.</p><div class="before-after"><div class="ba">Avant : un post écrit à la dernière minute</div><div class="ba">Après : 12 posts prêts à programmer</div></div></div></article>
+        <article class="ex reveal"><span class="k">Administratif</span><div><h3>La boîte mail qui se trie seule</h3><p>Classement, résumés et brouillons de réponse automatiques.</p><div class="before-after"><div class="ba">Avant : des mails lus un par un</div><div class="ba">Après : les priorités du jour en un coup d'œil</div></div></div></article>
+        <article class="ex reveal"><span class="k">Commercial</span><div><h3>Des relances qui partent toutes seules</h3><p>Chaque devis sans réponse reçoit une relance personnalisée.</p><div class="before-after"><div class="ba">Avant : des devis oubliés</div><div class="ba">Après : une relance envoyée à J+4</div></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="apropos">
+    <div class="wrap inner">
+      <div class="photo reveal" role="img" aria-label="Photo de Mélodie"><img src="photo.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;border-radius:40px"><span class="sticker">Bordeaux ✦</span></div>
+      <div class="txt reveal">
+        <span class="eyebrow">À propos</span>
+        <p class="big">Je suis Mélodie, <mark>assistante de direction dans une startup IA</mark> à Bordeaux depuis deux ans. Notre entreprise fait partie des <mark class="v">4 % qui utilisent le plus l'IA</mark>.</p>
+        <p class="big" style="color:var(--mute)">Sur mon temps libre, je transmets ce que je pratique chaque jour, <mark>parce que j'adore transmettre</mark>.</p>
+        <a class="btn ghost" href="#contact">Travailler avec moi</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="badges" aria-label="En bref">
+    <div class="wrap badge-row">
+      <div class="badge reveal"><b data-count="2">0</b><span>ans en startup IA</span></div>
+      <div class="badge reveal"><b>Top <span data-count="4">0</span> %</b><span>des entreprises utilisatrices d'IA</span></div>
+      <div class="badge reveal"><b>99 €</b><span>l'heure, seul·e ou à deux</span></div>
+      <div class="badge reveal"><b data-count="4">0</b><span>domaines couverts</span></div>
+    </div>
+  </section>
+
+  <section class="perso">
+    <div class="wrap">
+      <div class="reveal"><span class="eyebrow">100 % sur mesure</span><h2>Rien n'est<br>générique.</h2></div>
+      <div class="perso-grid">
+        <div class="pc reveal"><span class="pk">Avant</span><h3>Je prépare votre séance</h3><p>Un court questionnaire et un appel de 15 min : votre métier, vos outils, vos 3 tâches les plus chronophages. J'arrive en sachant quoi construire.</p></div>
+        <div class="pc reveal"><span class="pk">Pendant</span><h3>Seule à côté de vous</h3><p>Une ou deux personnes maximum, sur <mark>votre</mark> ordinateur, vos fichiers, vos comptes. C'est vous qui tenez la souris.</p></div>
+        <div class="pc reveal"><span class="pk">Après</span><h3>Vous n'êtes pas seul·e</h3><p>Un récapitulatif écrit, votre bibliothèque de prompts personnalisée et 7 jours de questions sur WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="tarifs">
+    <div class="wrap">
+      <div class="reveal"><span class="eyebrow">Tarifs</span><h2>Simple et transparent.</h2></div>
+      <div class="plans">
+        <div class="plan reveal"><h3>Séance 1 h · 1 ou 2 pers.</h3><div class="amt">99 €</div><p>Pour découvrir l'IA sur vos outils et repartir avec vos premiers prompts.</p></div>
+        <div class="plan hot reveal"><h3>Séance 2 h · Recommandée</h3><div class="amt">198 €</div><p>1 ou 2 personnes. Le temps de construire une automatisation qui tourne à la fin de la séance.</p></div>
+        <div class="plan reveal"><h3>Appel diagnostic · 15 min</h3><div class="amt">Offert</div><p>On identifie ensemble les tâches à automatiser en priorité.</p></div>
+      </div>
+      <p class="reveal" style="margin-top:28px;color:var(--mute);font-weight:600;text-align:center">Même prix seul·e ou à deux · Appel diagnostic de 15 min offert · TVA non applicable, art. 293 B du CGI</p>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <div>
+          <h2>Prêt·e à gagner du temps <em>ensemble</em> ?</h2>
+          <p class="lead">Réservez un créneau ou dites-moi ce que vous voulez automatiser. Réponse sous 24 h.</p>
+          <a class="btn primary" href="https://calendly.com/[TON-LIEN]" target="_blank" rel="noopener">Choisir un créneau →</a>
+        </div>
+        <form id="form" novalidate>
+          <label>Nom<input name="nom" required autocomplete="name"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+          <label>Domaine<select name="domaine"><option>Marketing</option><option>Administratif</option><option>Commercial</option><option>Développement</option><option>Je ne sais pas encore</option></select></label>
+          <label>Votre besoin<textarea name="message"></textarea></label>
+          <div><button class="btn primary" type="submit">Envoyer</button></div>
+          <p class="ok" id="ok" role="status">Merci ! Je vous réponds sous 24 h.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Mélodie Logeais · Formatrice IA · Bordeaux</span><span><a href="#">Mentions légales</a> · <a href="#">LinkedIn</a></span></div></footer>
+
+<script src="logos.js"></script>
+<script>
+// Mot qui change de police
+const words=["marketing","administratif","commercial","développement","business"];
+const fonts=["Rubik Glitch","Rubik Bubbles","Rubik Iso","Rubik Maze","Rubik Moonrocks","Rubik Puddles"];
+const w=document.getElementById('word');let wi=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+w.style.fontFamily=fonts[0];
+if(!reduce)setInterval(()=>{w.classList.add('out');setTimeout(()=>{wi=(wi+1)%words.length;w.textContent=words[wi];w.style.fontFamily=fonts[wi%fonts.length];w.classList.remove('out');},250);},2200);
+
+// Marquee d'outils
+const tools=['openai','claude','googlegemini','perplexity','cursor','midjourney','notion','canva','make','zapier','gmail','googlesheets'];
+const tr=document.getElementById('track');tr.innerHTML=[...tools,...tools].map(k=>logoItem(k,76)).join('');
+
+// Curseur lumineux
+const c=document.getElementById('cursor');addEventListener('pointermove',e=>{c.style.left=e.clientX+'px';c.style.top=e.clientY+'px';});
+
+// Reveal + compteurs
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(n=>{const to=+n.dataset.count;let v=0;const s=setInterval(()=>{v++;n.textContent=v;if(v>=to)clearInterval(s);},120);});
+  io.unobserve(e.target);}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Services au toucher
+document.querySelectorAll('.svc').forEach(s=>s.addEventListener('click',()=>s.classList.toggle('open')));
+
+document.getElementById('form').onsubmit=e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity();return;}document.getElementById('ok').style.display='block';f.reset();};
+</script>
+</body>
+</html>
